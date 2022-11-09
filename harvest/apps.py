@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StartSiteConfig(AppConfig):
+class HarvestConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'start_site'
+    name = 'harvest'
