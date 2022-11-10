@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
-from django.http import HttpResponse
+from .models import CoffeeOriginCountry
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the harvest index.")
+    all_countries = CoffeeOriginCountry.objects.all()
+    context = {'all_countries': all_countries}
+    return render(request, 'harvest/index.html', context)

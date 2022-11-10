@@ -1,0 +1,9 @@
+{% if all_countries %}
+<ul>
+    {% for country in all_countries %}
+    <li>{{ country.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No countries are available.</p>
+{% endif %}
