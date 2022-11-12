@@ -1,6 +1,7 @@
-{% if all_countries %}
+{% if valid_countries %}
+<p> Based on today's date and harvest time it is recommended to buy coffee from following countries:</p>
 <ul>
-    {% for country in all_countries %}
+    {% for country in valid_countries %}
     <li>{{ country.name }}</li>
     {% endfor %}
 </ul>
