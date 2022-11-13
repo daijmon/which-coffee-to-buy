@@ -25,7 +25,8 @@ class CoffeeFromCountryView(TemplateView):
 
     def which_coffee_to_buy(self) -> list[CoffeeOriginCountry]:
         all_countries_annotated = CoffeeOriginCountry.objects.all().annotate(
-            middle_of_harvest=((F("start_date__month") + F("end_date__month")) / 2))
+            middle_of_harvest=((F("start_date__month") + F("end_date__month")) / 2)
+        )
         valid_countries = all_countries_annotated.filter(
             middle_of_harvest__lte=self.harvest_month,
             end_date__month__gte=self.harvest_month,
@@ -33,7 +34,7 @@ class CoffeeFromCountryView(TemplateView):
         return self._sort_countries_based_on_harvest(valid_countries)
 
     def _sort_countries_based_on_harvest(
-            self, countries: list[CoffeeOriginCountry]
+        self, countries: list[CoffeeOriginCountry]
     ) -> list[CoffeeOriginCountry]:
         return sorted(countries, key=self._middle_harvest_closeness)
 
